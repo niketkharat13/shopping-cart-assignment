@@ -1,0 +1,40 @@
+header.main-header {
+  display: flex;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+  & .container {
+    width: 100%;
+    display: flex;
+  }
+}
+
+.container {
+  margin: 0 50px;
+  width: 100%;
+  display: flex;
+}
+
+
+footer.main-footer {
+  display: flex;
+  height: 40px;
+  background-color: #eeeeee;
+  align-items: center;
+}
+* {
+  font-family: "Dosis";
+}
+@media screen and (max-width: 768px) {
+  .container {
+    margin: 0;
+  }
+  .main-footer .container p {
+    text-align: center;
+    margin: auto;
+  }
+}
+
+@media screen and (min-width: 1300px) {
+    .container {
+        margin: 0 10%;
+    }
+}

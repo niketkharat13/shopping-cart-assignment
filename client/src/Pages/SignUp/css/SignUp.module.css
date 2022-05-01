@@ -1,0 +1,38 @@
+.form {
+  display: flex;
+  margin: 20px auto; }
+  .form .container_section {
+    width: 40%;
+    padding: 10px; }
+    .form .container_section h1 {
+      font-size: 30px;
+      margin-bottom: 10px; }
+    .form .container_section p {
+      margin: 0;
+      font-weight: 600; }
+
+.submitbtn {
+  width: 100%;
+  background: transparent;
+  background-color: #bf2957;
+  height: 40px;
+  color: white;
+  outline: none;
+  border: none;
+  margin-top: 20px;
+  cursor: pointer; }
+
+@media screen and (max-width: 769px) {
+  .form .container {
+    margin: 0 20px; } }
+
+@media screen and (max-width: 600px) {
+  .form .container_section {
+    width: 100%; }
+    .form .container_section.formsection {
+      margin-top: 20px; }
+  .form .container {
+    flex-wrap: wrap;
+    margin: 0 20px; }
+  .container h1 {
+    margin-top: 10px; } }

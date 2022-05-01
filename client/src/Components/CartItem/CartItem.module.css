@@ -1,0 +1,27 @@
+.cartitem {
+    display: flex;
+    padding: 15px;
+    margin: 10px auto;
+    background-color: white;
+}
+.cartitem .productimg img {
+    width: 70px;
+    height: 70px;
+}
+.cartitem .productdesc h2{
+    font-size: 18px;
+    margin-top: 5px;
+}
+
+.cartitem .productdesc {
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 100%;
+}
+.cartitem .productdesc .counterdiv {
+    display: flex;
+    justify-content: space-between;
+}
+.cartitem .productdesc .countercontrol {
+    display: flex;
+}

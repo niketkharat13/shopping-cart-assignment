@@ -1,0 +1,7 @@
+.container {
+  flex-direction: column;
+  display: block;
+  width: auto; }
+
+.categorydiv {
+  width: 100%; }
