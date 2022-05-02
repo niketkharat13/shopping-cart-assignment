@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import SliderCarousel from "../../Components/Carousel/Carousel";
@@ -26,29 +26,28 @@ const Home = () => {
     }
     return (
         <>
-                <section className={[HomeCSS.container, 'container'].join(' ')}>
-                    <div className={HomeCSS.ca}>
-                        {/* <SliderCarousel
-                            banners={bannerState.banners} 
-                        /> */}
-                    </div>
-                    <div className={HomeCSS.categorydiv}>
-                        {
-                            categoryState.category.map((category, index) => {
-                                return (
-                                    <React.Fragment key={index}>
-                                        <Category
-                                            navigateToPLP={navigateToPLP}
-                                            category={category}
-                                            index={index+1}
-                                        />
-                                    </React.Fragment>
-                                )
-                            })
-                        }
-                    </div>
-                </section>
-            
+            <section className={[HomeCSS.container, 'container'].join(' ')}>
+                <div className={''}>
+                    <SliderCarousel
+                        banners={bannerState.banners} 
+                    />
+                </div>
+                <div className={HomeCSS.categorydiv}>
+                    {
+                        categoryState.category.map((category, index) => {
+                            return (
+                                <React.Fragment key={index}>
+                                    <Category
+                                        navigateToPLP={navigateToPLP}
+                                        category={category}
+                                        index={index+1}
+                                    />
+                                </React.Fragment>
+                            )
+                        })
+                    }
+                </div>
+            </section>
         </>
     )
 }

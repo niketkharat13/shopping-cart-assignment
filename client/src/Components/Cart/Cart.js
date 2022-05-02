@@ -67,17 +67,17 @@ const  CartLayout = ({cart, toggleCart}) => {
         </section>
     )
 }
-const BackDrop = () => {
+const BackDrop = ({toggleCart}) => {
     return (
-        <div className="dropdown-backdrop"></div>
+        <div className={CartCss.dropdown_backdrop} onClick={toggleCart}></div>
     )
 }
-const Cart = ({toggleCart}) => {
+const Cart = ({toggleCart, isCartFullScreen}) => {
     const cart = useSelector(state => state.cart);
     return (
         <>
             {ReactDOM.createPortal(<CartLayout cart={cart} toggleCart={toggleCart} />  , document.getElementById('cartRoot'), 'cart')}
-            {/* {ReactDOM.createPortal(<BackDrop/>, document.getElementById('backdropdiv'), 'backdrop')} */}
+            {!isCartFullScreen && ReactDOM.createPortal(<BackDrop toggleCart={toggleCart}/>, document.getElementById('backdropdiv'), 'backdrop')}
         </>
     )
 }

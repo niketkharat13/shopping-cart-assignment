@@ -10,15 +10,14 @@ const ProductCard = ({product, isMobile}) => {
     const buyNow = (product) => {
         let isCartAlreadyExisted = cart.cart.filter(p => p.id === product.id);
         if (isCartAlreadyExisted.length === 0) {
-            dispatch(addToCart(product))
+            dispatch(addToCart(product));
         } else {
-            dispatch(updateCartProductQnt({id: product.id, type: 'INCREMENT'}))
+            dispatch(updateCartProductQnt({id: product.id, type: 'INCREMENT'}));
         }
     }
     useEffect(() => {
         setShowMoreDesc(description.length < 120);
     }, [description.length]);
-    console.log(isMobile);
     return (
         <div className={ProductCardCss.product_card}>
             <header className={ProductCardCss.product_card_header}><h1>{name}</h1></header>

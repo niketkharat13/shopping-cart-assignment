@@ -3,7 +3,8 @@ import {Routes, Route } from 'react-router-dom';
 import Header from './Components/Header/Header';
 import Footer from './Components/Footer/Footer';
 import "./App.css"
-import { useSearchParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+// const Toaster = lazy(() => import('./Components/Toaster/Toaster'));
 const SignUp = lazy(() => import('./Pages/SignUp/SignUp'));
 const Login = lazy(() => import('./Pages/Login/Login'));
 const Home = lazy(() => import('./Pages/Home/Home'));
@@ -11,17 +12,25 @@ const ProductListPage = lazy(() => import('./Pages/ProductListPage/ProductListPa
 const Cart = lazy(() => import('./Components/Cart/Cart'));
 function App() {
   const [isCartFullScreen, setIsCartFullScreen] = useState(false);
-  const a = useSearchParams();
-  console.log(a, 'a');
+  const [isCartDisable, setIsCartDisable] = useState(true);
+  const url = useLocation();
+  console.log(url);
   useEffect(() => {
-    setIsCartFullScreen(window.screen.width < 769)
+    setIsCartFullScreen(window.screen.width < 769);
+   
   }, [])
+  useEffect(() => {
+    if (url.pathname.toLocaleLowerCase() === '/product-list-page') {
+      setIsCartDisable(false)
+    }
+  }, [url.pathname])
   const [isCartOpen, setIsCartOpen] = useState(false);
   const toggleCart = () =>  setIsCartOpen(!isCartOpen);    
   return (
     <div className="App">
       <Header
         toggleCart={toggleCart}
+        isCartDisable={isCartDisable}
       />
       <Routes>
         <Route 
@@ -59,8 +68,11 @@ function App() {
       </Routes>
       {!isCartFullScreen && !isCartOpen && <Footer/>}
       {
-        isCartOpen ? <Suspense fallback={<div>Loading</div>}><Cart toggleCart={toggleCart}  /></Suspense> : null
+        isCartOpen ? <Suspense fallback={<div>Loading</div>}><Cart isCartFullScreen={isCartFullScreen} toggleCart={toggleCart}  /></Suspense> : null
       }
+      {/* <Suspense fallback={<div>Loading</div>}>
+        <Toaster/>
+      </Suspense> */}
     </div>
   );
 }

@@ -14,7 +14,8 @@
         color: #000; }
 
 .cartlogo {
-  width: 35px; }
+  width: 35px;
+  height: 35px; }
 
 .cartbutton {
   background: transparent;
@@ -43,10 +44,15 @@
 header .headercontent {
   width: 100%; }
 
+.brandimg {
+  height: 86px;
+  width: 190px; }
+
 @media screen and (max-width: 768px) {
   .brandimg {
     height: 60px;
-    margin: 10px 0; }
+    margin: 10px 0;
+    width: auto; }
   .cartbutton {
     margin-top: 5px;
     float: right; } }
@@ -56,7 +62,8 @@ header .headercontent {
     display: none !important; }
   .brandimg {
     height: 44px;
-    margin: 3px 0; }
+    margin: 3px 0;
+    width: 110px; }
   .cartbutton {
     margin-top: 0; }
   .nav_link {

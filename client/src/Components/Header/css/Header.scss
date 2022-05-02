@@ -19,6 +19,7 @@
 }
 .cartlogo {
     width: 35px;
+    height: 35px;
 }
 .cartbutton {
     background: transparent;
@@ -54,11 +55,16 @@ header {
     }
 }
 
+.brandimg {
+    height: 86px;
+    width: 190px;
+}
 
 @media screen and (max-width:768px) {
     .brandimg {
         height: 60px;
         margin: 10px 0;
+        width: auto;
     }
     .cartbutton {
         margin-top: 5px;
@@ -72,6 +78,7 @@ header {
     .brandimg {
         height: 44px;
         margin: 3px 0;
+        width: 110px;
     }
     .cartbutton {
         margin-top: 0;

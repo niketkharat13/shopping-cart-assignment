@@ -15,7 +15,7 @@ const SideMenu = ({category, isMobile}) => {
                                         return (
                                             // style={{height: '35px', listStyle: 'none', borderBottom: '1px solid black', paddingLeft: '10px', marginTop: '8px'}}
                                             <li key={index}>
-                                                <button onClick={() => dispatch(categoryAction.setCategory(category))}>{category.name}</button>
+                                                <button role="link" onClick={() => dispatch(categoryAction.setCategory(category))}>{category.name}</button>
                                             </li>
                                         )
                                     })

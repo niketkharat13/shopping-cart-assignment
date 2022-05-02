@@ -28,7 +28,7 @@ const Header = (props) => {
                                     <Link to='/sign-up'>Register</Link>
                                 </li>
                             </ul>
-                            <button className={HeaderCSS.cartbutton} onClick={() => props.toggleCart()}>
+                            <button className={HeaderCSS.cartbutton} onClick={() => props.toggleCart()} disabled={props.isCartDisable}>
                                 <div style={{display: 'flex', justifyContent: 'center', alignItems:'center'}}>
                                     <img src="/static/images/cart.svg" alt="cart" className={HeaderCSS.cartlogo} />
                                     <span style={{display: 'flex', alignItems: 'center', fontSize: '15px'}}>{cart.cart.length} item(s)</span>

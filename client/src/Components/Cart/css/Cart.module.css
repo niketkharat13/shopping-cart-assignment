@@ -4,7 +4,8 @@
   position: fixed;
   bottom: 0;
   right: 60px;
-  background-color: #eee; }
+  background-color: #eee;
+  z-index: 1; }
   .cartdiv.no_item_cart_body {
     background-color: white; }
   .cartdiv header {
@@ -78,7 +79,8 @@
       border: none;
       border-radius: 5px;
       display: flex;
-      justify-content: space-between; }
+      justify-content: space-between;
+      cursor: pointer; }
     .cartdiv .cartfooter .proceedbtn.center_text {
       justify-content: center; }
 
@@ -109,3 +111,13 @@
     height: 90vh; }
     .cartdiv .cartbody {
       margin-bottom: 0; } }
+
+.dropdown_backdrop {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  opacity: .5;
+  z-index: 0;
+  right: 0;
+  top: 0; }

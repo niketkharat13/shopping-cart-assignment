@@ -6,6 +6,7 @@
     bottom: 0;
     right: 60px;
     background-color: #eee;
+    z-index: 1;
     &.no_item_cart_body {
         background-color: white;
     }
@@ -100,6 +101,7 @@
             border-radius: 5px;
             display: flex;
             justify-content: space-between;
+            cursor: pointer;
         }
         .proceedbtn.center_text {
             justify-content: center;
@@ -143,4 +145,14 @@
             margin-bottom: 0;
         }
     }
+}
+.dropdown_backdrop {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    opacity: .5;
+    z-index: 0;
+    right: 0;
+    top: 0; 
 }
