@@ -15,17 +15,3 @@ export const getCategories  = () => {
         }
     }
 }
-
-export const fetchProductByCategory = () => {
-    return async (dispatch) => {
-        try {
-            dispatch(categoryAction.setLoader());
-            let category = await ApiService.getApi('/products');
-            if (category.status) {
-                dispatch(categoryAction.setCategories())
-            }
-        } catch (error) {
-            dispatch(categoryAction.setError())
-        }
-    }
-}
