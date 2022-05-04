@@ -27,10 +27,13 @@ const Home = () => {
     return (
         <>
             <section className={[HomeCSS.container, 'container'].join(' ')}>
-                <div className={''}>
-                    <SliderCarousel
-                        banners={bannerState.banners} 
-                    />
+                <div>
+                    {
+                        bannerState.banners.length > 0 && 
+                        <SliderCarousel
+                            banners={bannerState.banners} 
+                        />
+                    }
                 </div>
                 <div className={HomeCSS.categorydiv}>
                     {

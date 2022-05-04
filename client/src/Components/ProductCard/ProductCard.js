@@ -27,7 +27,7 @@ const ProductCard = ({product, isMobile}) => {
                     <span className={ProductCardCss.product_description_span} style={showMoreDesc && !isMobile ? {height: 'auto'} : null}>
                         <p className={ProductCardCss.product_description}>{description.length > 120 && !showMoreDesc ? <>
                             {
-                                description.substring(0, 110)
+                                description.substring(0, !isMobile ? 110 : 100)
                             }
                             {/* <p className={ProductCardCss.showMoreDesc} onClick={() => setShowMoreDesc(true)}> ...</p> */}
                         </> : <>

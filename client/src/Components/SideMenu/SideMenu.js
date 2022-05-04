@@ -1,8 +1,17 @@
 import { useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
 import SideMenuCSS from './css/SideMenu.module.css';
 import { categoryAction } from "../../store/slice/category";
-const SideMenu = ({category, isMobile}) => {
+const SideMenu = ({category, isMobile, selectedCategory}) => {
+    const [categoryVal, setCategoryVal] = useState('-1')
     const dispatch = useDispatch();
+    const categoryOnChange = (val) => {
+        setCategoryVal(categoryVal === val ? '-1' : val);
+    }
+    useEffect(() => {
+        let categoryIndex = category.findIndex(c => c.id === categoryVal);
+        dispatch(categoryAction.setCategory(categoryVal === '-1' ? null : category[categoryIndex]));
+    }, [categoryVal, category, dispatch]);
     return(
         <>
             {
@@ -13,9 +22,8 @@ const SideMenu = ({category, isMobile}) => {
                                 {
                                     category.map((category, index) => {
                                         return (
-                                            // style={{height: '35px', listStyle: 'none', borderBottom: '1px solid black', paddingLeft: '10px', marginTop: '8px'}}
                                             <li key={index}>
-                                                <button role="link" onClick={() => dispatch(categoryAction.setCategory(category))}>{category.name}</button>
+                                                <button role="link" style={selectedCategory !== null && category.id === selectedCategory.id ? {color: '#bf2957'} : null} onClick={() => categoryOnChange(category.id)}>{category.name}</button>
                                             </li>
                                         )
                                     })
@@ -24,10 +32,11 @@ const SideMenu = ({category, isMobile}) => {
                         </nav>
                     </aside> : 
                     <>
-                        <select className={SideMenuCSS.category_dropdown}>
+                        <select className={SideMenuCSS.category_dropdown} onChange={(e) => categoryOnChange(e.target.value)} value={categoryVal}>
+                            <option value='-1'>Please select Category</option>
                             {
                                  category.map((category, index) => {
-                                     return <option onClick={() => dispatch(categoryAction.setCategory(category))} key={index}>{category.name}</option>
+                                     return <option key={index} value={category.id}>{category.name}</option>
                                  })
                             }
                         </select>

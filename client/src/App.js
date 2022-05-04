@@ -4,7 +4,6 @@ import Header from './Components/Header/Header';
 import Footer from './Components/Footer/Footer';
 import "./App.css"
 import { useLocation } from 'react-router-dom';
-// const Toaster = lazy(() => import('./Components/Toaster/Toaster'));
 const SignUp = lazy(() => import('./Pages/SignUp/SignUp'));
 const Login = lazy(() => import('./Pages/Login/Login'));
 const Home = lazy(() => import('./Pages/Home/Home'));
@@ -12,20 +11,19 @@ const ProductListPage = lazy(() => import('./Pages/ProductListPage/ProductListPa
 const Cart = lazy(() => import('./Components/Cart/Cart'));
 function App() {
   const [isCartFullScreen, setIsCartFullScreen] = useState(false);
-  const [isCartDisable, setIsCartDisable] = useState(true);
+  const [isCartDisable, setIsCartDisable] = useState(false);
   const url = useLocation();
-  console.log(url);
+  console.log(url, 'url');
   useEffect(() => {
     setIsCartFullScreen(window.screen.width < 769);
-   
   }, [])
   useEffect(() => {
-    if (url.pathname.toLocaleLowerCase() === '/product-list-page') {
-      setIsCartDisable(false)
+    if (url.pathname.toLocaleLowerCase() === '/log-in' || url.pathname.toLocaleLowerCase() === '/sign-up') {
+      setIsCartDisable(true)
     }
-  }, [url.pathname])
+  }, [url])
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const toggleCart = () =>  setIsCartOpen(!isCartOpen);    
+  const toggleCart = () => setIsCartOpen(!isCartOpen);
   return (
     <div className="App">
       <Header
@@ -65,14 +63,19 @@ function App() {
             </Suspense>
           } 
         />
+         <Route 
+          path='/' 
+          element={
+            <Suspense fallback={<div>Loading</div>}>
+              <Home />
+            </Suspense>
+          } 
+        />
       </Routes>
       {!isCartFullScreen && !isCartOpen && <Footer/>}
       {
         isCartOpen ? <Suspense fallback={<div>Loading</div>}><Cart isCartFullScreen={isCartFullScreen} toggleCart={toggleCart}  /></Suspense> : null
       }
-      {/* <Suspense fallback={<div>Loading</div>}>
-        <Toaster/>
-      </Suspense> */}
     </div>
   );
 }
